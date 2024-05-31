@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Details</title>
+    <link rel="stylesheet" type="text/css" href="layout.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body class="bg-info-subtle text-info-emphasis text-center">
+<main layout:fragment="content">
+    <div class="container my-4">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passwordModal">
+            Get Access
+        </button>
+
+        <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="passwordModalLabel">Enter Name and Password</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form th:action="@{/url}" method="post">
+                            <input type="hidden" name="id" th:value="${url.id}" />
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" name="name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                    <div th:if="${error}" class="alert alert-danger mt-3" th:text="${error}"></div>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${isCorrect}">
+            <div class="container my-4">
+                <h1 class="mb-4">URL Details</h1>
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                    <tr>
+                        <td><strong>URL ID</strong></td>
+                        <td th:text="${url.id}"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Target URL</strong></td>
+                        <td th:text="${url.targetUrl}"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Redirect URL</strong></td>
+                        <td th:text="${url.redirectUrl}"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Visits</strong></td>
+                        <td th:text="${url.visits}"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Name</strong></td>
+                        <td th:text="${url.name}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <a th:href="@{'/edit?id=' + ${url.id}}" class="btn btn-outline-primary mt-3">Edit</a>
+                <a th:href="@{'/delete?id=' + ${url.id}}" class="btn btn-outline-danger mt-3">Delete</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
