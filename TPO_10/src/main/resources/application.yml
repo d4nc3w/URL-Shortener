@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: TPO_10
+  h2:
+    console:
+      path: /my-h2-console
+  datasource:
+    url: jdbc:h2:file:./db/links
+    username: s28113
+    password:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    naming:
+      physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+pl:
+  edu:
+    pja:
+      tpo10:
+        filename: "links.csv"
