@@ -234,3 +234,122 @@ Configures the OpenAPI documentation.
 Returns: OpenAPI
 This documentation covers the purpose and functionality of each method and class in the provided code.
 
+NotEnoughDigits
+Annotation:
+
+Annotation Class: NotEnoughDigits
+Validator Class: NotEnoughDigitsValidator
+Message: "{org.example.tpo_10.PasswordValidator.missing.digits}"
+Description: Ensures the password contains at least 3 digits.
+Validator:
+
+Validator Method: isValid
+Parameters: password (String), context (ConstraintValidatorContext)
+Logic:
+If the password is null or empty, it is considered valid.
+Counts the number of digits in the password.
+Returns true if there are at least 3 digits; otherwise, returns false.
+NotEnoughLowercaseLetters
+Annotation:
+
+Annotation Class: NotEnoughLowercaseLetters
+Validator Class: NotEnoughLowercaseValidator
+Message: "{org.example.tpo_10.PasswordValidator.missing.lowercase}"
+Description: Ensures the password contains at least 1 lowercase letter.
+Validator:
+
+Validator Method: isValid
+Parameters: password (String), context (ConstraintValidatorContext)
+Logic:
+If the password is null or empty, it is considered valid.
+Counts the number of lowercase letters in the password.
+Returns true if there is at least 1 lowercase letter; otherwise, returns false.
+NotEnoughSpecial
+Annotation:
+
+Annotation Class: NotEnoughSpecial
+Validator Class: NotEnoughSpecialValidator
+Message: "{org.example.tpo_10.PasswordValidator.missing.special}"
+Description: Ensures the password contains at least 4 special characters.
+Validator:
+
+Validator Method: isValid
+Parameters: password (String), context (ConstraintValidatorContext)
+Logic:
+If the password is null or empty, it is considered valid.
+Counts the number of special characters in the password (characters that are not letters or digits).
+Returns true if there are at least 4 special characters; otherwise, returns false.
+NotEnoughUppercaseLetters
+Annotation:
+
+Annotation Class: NotEnoughUppercaseLetters
+Validator Class: NotEnoughUppercaseValidator
+Message: "{org.example.tpo_10.PasswordValidator.missing.uppercase}"
+Description: Ensures the password contains at least 2 uppercase letters.
+Validator:
+
+Validator Method: isValid
+Parameters: password (String), context (ConstraintValidatorContext)
+Logic:
+If the password is null or empty, it is considered valid.
+Counts the number of uppercase letters in the password.
+Returns true if there are at least 2 uppercase letters; otherwise, returns false.
+NotUniqueURL
+Annotation:
+
+Annotation Class: NotUniqueURL
+Validator Class: NotUniqueURLValidator
+Message: "{org.example.tpo_10.UrlNotUniqueValidator.notUnique}"
+Description: Ensures the URL is unique and not already present in the database.
+Validator:
+
+Validator Method: isValid
+Parameters: value (String), context (ConstraintValidatorContext)
+Logic:
+If the URL is null, it is considered invalid.
+Retrieves all URLs from the URL service.
+Returns true if the URL is not present in the list of all URLs; otherwise, returns false.
+PasswordTooShort
+Annotation:
+
+Annotation Class: PasswordTooShort
+Validator Class: PasswordTooShortValidator
+Message: "{org.example.tpo_10.PasswordValidator.too.short}"
+Description: Ensures the password is at least 10 characters long.
+Validator:
+
+Validator Method: isValid
+Parameters: password (String), context (ConstraintValidatorContext)
+Logic:
+If the password is null or empty, it is considered valid.
+Counts the number of characters in the password.
+Returns true if the password is at least 10 characters long; otherwise, returns false.
+UrlNotHttps
+Annotation:
+
+Annotation Class: UrlNotHttps
+Validator Class: UrlNotHttpsValidator
+Message: "{org.example.tpo_10.UrlNotHttpsValidator.notHttps}"
+Description: Ensures the URL starts with "https://".
+Validator:
+
+Validator Method: isValid
+Parameters: value (String), context (ConstraintValidatorContext)
+Logic:
+If the URL is null, it is considered invalid.
+Returns true if the URL starts with "https://"; otherwise, returns false.
+UrlNotValid
+Annotation:
+
+Annotation Class: UrlNotValid
+Validator Class: UrlNotValidValidator
+Message: "{org.example.tpo_10.UrlNotValid.noDomain}"
+Description: Ensures the URL ends with a valid domain (e.g., .com, .net, .org, etc.).
+Validator:
+
+Validator Method: isValid
+Parameters: value (String), context (ConstraintValidatorContext)
+Logic:
+If the URL is null, it is considered invalid.
+Returns true if the URL ends with a valid domain (e.g., .com, .net, .org, etc.); otherwise, returns false.
+
