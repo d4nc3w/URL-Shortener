@@ -1,6 +1,6 @@
 # URL-Shortener
 
-[Documentation] below:
+[Documentation]
 
 1. URLController
 
